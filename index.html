@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free order flow MCP server and API · Swiftedge</title>
+<meta name="description" content="Free live order flow data for AI assistants and code: order book walls, CVD, liquidations, funding and key levels for Bitcoin, gold, silver, oil and US 100.">
+<meta property="og:title" content="Free order flow MCP server and API · Swiftedge">
+<meta property="og:description" content="Live order book walls, CVD, large trades, liquidations, funding and key levels for 9 markets. No key, no account.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nicklasandersson91-png.github.io/orderflow-mcp/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swiftedge order flow MCP server and API",
+ "applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://swiftedge.uk/developers",
+ "sameAs":["https://github.com/nicklasandersson91-png/orderflow-mcp"],
+ "description":"Free live order flow data over MCP and a REST API: order book depth and walls, candles with buy and sell volume and CVD, large trades, liquidations, an estimated liquidation map, funding, open interest and key levels for Bitcoin, Ethereum, Solana, XRP, gold, silver, WTI crude oil, the US 500 and the US 100.",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+ "publisher":{"@type":"Organization","name":"Swiftedge","url":"https://swiftedge.uk"}}
+</script>
+<style>
+:root{--bg:#0b0f14;--surface:#121821;--line:#1f2a36;--text:#e6edf3;--muted:#9aa7b4;--accent:#2ee6c8;--code:#0f141b}
+@media (prefers-color-scheme: light){:root{--bg:#f7f9fb;--surface:#ffffff;--line:#dbe2ea;--text:#0d1620;--muted:#4a5866;--accent:#0f9e88;--code:#eef2f6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:880px;margin:0 auto;padding:40px 16px 64px}
+h1{font-size:34px;line-height:1.2;margin:0 0 12px}
+h2{font-size:22px;margin:40px 0 12px}
+p{margin:0 0 14px}
+a{color:var(--accent)}
+.lead{font-size:18px;color:var(--muted)}
+.kort{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
+.kort ul{margin:0;padding-left:20px}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px}
+code{background:var(--code);padding:2px 6px;border-radius:6px}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto}
+pre code{background:none;padding:0}
+.tabel{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--surface);font-weight:600}
+tr:last-child td{border-bottom:0}
+.knap{display:inline-block;background:var(--accent);color:#04201b;font-weight:600;text-decoration:none;padding:10px 16px;border-radius:10px;margin:4px 8px 4px 0}
+.knap.alt{background:none;color:var(--accent);border:1px solid var(--accent)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<h1>Free order flow MCP server and API</h1>
+<p class="lead">Live order book depth and walls, candles with buy and sell volume and CVD, large trades, liquidations, an estimated
+liquidation map, funding, open interest and key price levels for nine markets: Bitcoin, Ethereum, Solana, XRP, gold, silver,
+WTI crude oil, the US 500 and the US 100. No key, no account.</p>
+<p><a class="knap" href="https://swiftedge.uk/developers">Read the docs</a><a class="knap alt" href="https://github.com/nicklasandersson91-png/orderflow-mcp">View on GitHub</a></p>
+
+<div class="kort"><ul>
+<li><b>MCP server:</b> <code>https://swiftedge.uk/mcp</code> (Streamable HTTP)</li>
+<li><b>REST API:</b> <code>https://swiftedge.uk/api/v1/...</code> (JSON)</li>
+<li><b>OpenAPI 3.1:</b> <a href="https://swiftedge.uk/api/v1/openapi.json">/api/v1/openapi.json</a>, which also works as a ChatGPT GPT action</li>
+<li><b>Official MCP Registry:</b> listed as <code>uk.swiftedge/orderflow</code></li>
+</ul></div>
+
+<h2>Connect it to your AI app</h2>
+<p><b>Claude</b> (claude.ai or the desktop app): Settings → Connectors → Add custom connector, and paste <code>https://swiftedge.uk/mcp</code>.</p>
+<p><b>Claude Code:</b></p>
+<pre><code>claude mcp add --transport http swiftedge https://swiftedge.uk/mcp</code></pre>
+<p><b>Cursor and other clients with an <code>mcp.json</code>:</b></p>
+<pre><code>{ "mcpServers": { "swiftedge": { "url": "https://swiftedge.uk/mcp" } } }</code></pre>
+<p><b>ChatGPT:</b> import <a href="https://swiftedge.uk/api/v1/openapi.json">openapi.json</a> as a GPT action.</p>
+<p>Then ask, for example: "Where are the biggest bid walls on gold right now?", "Show me Bitcoin's CVD on the 4-hour chart" or
+"Where would longs on silver get liquidated?"</p>
+
+<h2>Twelve read-only tools</h2>
+<p>Each tool is also a plain GET endpoint on <code>https://swiftedge.uk/api/v1/</code>.</p>
+<div class="tabel"><table>
+<tr><th>Tool</th><th>What you get</th></tr>
+<tr><td><code>get_market_snapshot</code></td><td>Price, today's range, order book walls, resting liquidity, positioning levels, funding, open interest, large trades and liquidations near price</td></tr>
+<tr><td><code>get_markets_overview</code></td><td>Every market in one table: price, change since 00:00 UTC, funding, open interest change and the positioning flip</td></tr>
+<tr><td><code>get_order_book</code></td><td>The live order book grouped by price level, with the largest bids and asks and the imbalance</td></tr>
+<tr><td><code>get_candles</code></td><td>OHLC candles with aggressive buy and sell volume, delta and cumulative volume delta (CVD)</td></tr>
+<tr><td><code>get_large_trades</code></td><td>Large aggressive market orders in the last 24 hours</td></tr>
+<tr><td><code>get_liquidations</code></td><td>Liquidations that really happened in the last 1 to 24 hours, longs and shorts</td></tr>
+<tr><td><code>get_liquidation_heatmap</code></td><td>Where leveraged positions would be liquidated within 5 % of price</td></tr>
+<tr><td><code>get_funding_and_open_interest</code></td><td>Funding, next funding time, open interest and its 1, 4 and 24-hour change</td></tr>
+<tr><td><code>get_key_levels</code></td><td>Today's important prices above and below the live price</td></tr>
+<tr><td><code>get_economic_calendar</code></td><td>Upcoming releases with how much markets moved in the first hour after past releases</td></tr>
+<tr><td><code>get_research_studies</code></td><td>Swiftedge's published studies and their headline findings</td></tr>
+<tr><td><code>list_markets</code></td><td>The markets and their codes: <code>btc</code>, <code>eth</code>, <code>sol</code>, <code>xrp</code>, <code>gold</code>, <code>silver</code>, <code>us500</code>, <code>us100</code>, <code>oil</code></td></tr>
+</table></div>
+
+<h2>Live pages for every market</h2>
+<p>Every market trades 24/7 on Swiftedge. Each one has a free live order book heatmap and a levels page that is updated all day.
+The sessions pages show when the underlying market opens, closes and releases data, in your own time zone.</p>
+<div class="tabel"><table>
+<tr><th>Market</th><th>Live heatmap</th><th>Levels today</th><th>Trading sessions</th><th>Guide</th></tr>
+<tr><td>Bitcoin</td><td><a href="https://swiftedge.uk/depth">Bitcoin heatmap</a></td><td><a href="https://swiftedge.uk/btc/levels">Bitcoin levels</a></td><td><a href="https://swiftedge.uk/btc/sessions">Bitcoin sessions</a></td><td><a href="https://swiftedge.uk/guide/bitcoin-levels-explained">Bitcoin levels explained</a></td></tr>
+<tr><td>Gold</td><td><a href="https://swiftedge.uk/gold/depth">Gold heatmap</a></td><td><a href="https://swiftedge.uk/gold/levels">Gold levels</a></td><td><a href="https://swiftedge.uk/gold/sessions">Gold sessions</a></td><td><a href="https://swiftedge.uk/guide/gold-order-flow">Gold order flow</a></td></tr>
+<tr><td>Silver</td><td><a href="https://swiftedge.uk/silver/depth">Silver heatmap</a></td><td><a href="https://swiftedge.uk/silver/levels">Silver levels</a></td><td><a href="https://swiftedge.uk/silver/sessions">Silver sessions</a></td><td><a href="https://swiftedge.uk/guide/silver-order-flow">Silver order flow</a></td></tr>
+<tr><td>WTI crude oil</td><td><a href="https://swiftedge.uk/wti/depth">Oil heatmap</a></td><td><a href="https://swiftedge.uk/wti/levels">Oil levels</a></td><td><a href="https://swiftedge.uk/wti/sessions">Oil sessions</a></td><td><a href="https://swiftedge.uk/guide/oil-order-flow">Oil order flow</a></td></tr>
+<tr><td>US 100</td><td><a href="https://swiftedge.uk/us100/depth">US 100 heatmap</a></td><td><a href="https://swiftedge.uk/us100/levels">US 100 levels</a></td><td><a href="https://swiftedge.uk/us100/sessions">US 100 sessions</a></td><td><a href="https://swiftedge.uk/guide/us-100-order-flow">US 100 order flow</a></td></tr>
+<tr><td>US 500</td><td><a href="https://swiftedge.uk/sp500/depth">US 500 heatmap</a></td><td><a href="https://swiftedge.uk/sp500/levels">US 500 levels</a></td><td></td><td></td></tr>
+<tr><td>Ethereum</td><td><a href="https://swiftedge.uk/eth/depth">Ethereum heatmap</a></td><td><a href="https://swiftedge.uk/eth/levels">Ethereum levels</a></td><td></td><td></td></tr>
+<tr><td>Solana</td><td><a href="https://swiftedge.uk/sol/depth">Solana heatmap</a></td><td><a href="https://swiftedge.uk/sol/levels">Solana levels</a></td><td></td><td></td></tr>
+<tr><td>XRP</td><td><a href="https://swiftedge.uk/xrp/depth">XRP heatmap</a></td><td><a href="https://swiftedge.uk/xrp/levels">XRP levels</a></td><td></td><td></td></tr>
+</table></div>
+<p style="margin-top:14px">More guides: <a href="https://swiftedge.uk/guide/silver-levels-explained">silver levels</a>,
+<a href="https://swiftedge.uk/guide/oil-levels-explained">oil levels</a>, <a href="https://swiftedge.uk/guide/us-100-levels-explained">US 100 levels</a>
+and <a href="https://swiftedge.uk/guide/bitcoin-trading-sessions">Bitcoin trading sessions</a>. The weekly
+<a href="https://swiftedge.uk/cot">COT report</a> covers all nine markets, and the
+<a href="https://swiftedge.uk/economic-calendar">economic calendar</a> shows how much past releases moved the markets in the first hour.</p>
+
+<h2>Good to know</h2>
+<p><b>Free, no key.</b> Please link to <a href="https://swiftedge.uk/">swiftedge.uk</a> when you show the data, for example under a
+chart or in a bot's reply.</p>
+<p><b>Freshness.</b> A snapshot is at most about 15 seconds old, the order book about 10 seconds and the liquidation map about
+5 minutes. Responses are cached for 15 seconds.</p>
+<p><b>What the numbers are.</b> Swiftedge's own calculations on public perpetual futures order books and trades. Positioning levels
+and the liquidation map are estimates, not measurements and not a forecast. The data is descriptive and places no orders.</p>
+<p><b>Live chart.</b> For tick-by-tick data, open the <a href="https://swiftedge.uk/depth">live heatmap</a>. You can also
+<a href="https://swiftedge.uk/paper-trading">paper trade</a> on the live order book.</p>
+
+<footer>Swiftedge · <a href="https://swiftedge.uk/">swiftedge.uk</a> · <a href="https://swiftedge.uk/developers">Developers</a> ·
+<a href="https://github.com/nicklasandersson91-png/orderflow-mcp">Source and examples on GitHub</a> (MIT)</footer>
+</main>
+</body>
+</html>

@@ -13,6 +13,29 @@ Ethereum, Solana, XRP, gold, silver, the US 500, the US 100 and WTI crude oil**.
 The same numbers are drawn live in [Swiftedge Depth](https://swiftedge.uk/depth?utm_source=github&utm_medium=readme), a free
 order book heatmap with every trade, a footprint chart and 30+ indicators in the browser.
 
+## Live pages for every market
+
+Every market trades 24/7 on Swiftedge. Each one has a free live order book heatmap and a levels page that is updated all day.
+The sessions pages show when the underlying market opens, closes and releases data, in your own time zone.
+
+| Market | Live heatmap | Levels today | Trading sessions | Guide |
+|---|---|---|---|---|
+| Bitcoin | [/depth](https://swiftedge.uk/depth) | [/btc/levels](https://swiftedge.uk/btc/levels) | [/btc/sessions](https://swiftedge.uk/btc/sessions) | [Bitcoin levels explained](https://swiftedge.uk/guide/bitcoin-levels-explained) |
+| Gold | [/gold/depth](https://swiftedge.uk/gold/depth) | [/gold/levels](https://swiftedge.uk/gold/levels) | [/gold/sessions](https://swiftedge.uk/gold/sessions) | [Gold order flow](https://swiftedge.uk/guide/gold-order-flow) |
+| Silver | [/silver/depth](https://swiftedge.uk/silver/depth) | [/silver/levels](https://swiftedge.uk/silver/levels) | [/silver/sessions](https://swiftedge.uk/silver/sessions) | [Silver order flow](https://swiftedge.uk/guide/silver-order-flow) |
+| WTI crude oil | [/wti/depth](https://swiftedge.uk/wti/depth) | [/wti/levels](https://swiftedge.uk/wti/levels) | [/wti/sessions](https://swiftedge.uk/wti/sessions) | [Oil order flow](https://swiftedge.uk/guide/oil-order-flow) |
+| US 100 | [/us100/depth](https://swiftedge.uk/us100/depth) | [/us100/levels](https://swiftedge.uk/us100/levels) | [/us100/sessions](https://swiftedge.uk/us100/sessions) | [US 100 order flow](https://swiftedge.uk/guide/us-100-order-flow) |
+| US 500 | [/sp500/depth](https://swiftedge.uk/sp500/depth) | [/sp500/levels](https://swiftedge.uk/sp500/levels) | | |
+| Ethereum | [/eth/depth](https://swiftedge.uk/eth/depth) | [/eth/levels](https://swiftedge.uk/eth/levels) | | |
+| Solana | [/sol/depth](https://swiftedge.uk/sol/depth) | [/sol/levels](https://swiftedge.uk/sol/levels) | | |
+| XRP | [/xrp/depth](https://swiftedge.uk/xrp/depth) | [/xrp/levels](https://swiftedge.uk/xrp/levels) | | |
+
+More guides: [silver levels](https://swiftedge.uk/guide/silver-levels-explained),
+[oil levels](https://swiftedge.uk/guide/oil-levels-explained), [US 100 levels](https://swiftedge.uk/guide/us-100-levels-explained)
+and [Bitcoin trading sessions](https://swiftedge.uk/guide/bitcoin-trading-sessions). The weekly
+[COT report](https://swiftedge.uk/cot) covers all nine markets, and the [economic calendar](https://swiftedge.uk/economic-calendar)
+shows how much past releases moved the markets in the first hour.
+
 ## Connect it to your AI app
 
 **Claude** (claude.ai or the desktop app): Settings → Connectors → Add custom connector, and paste `https://swiftedge.uk/mcp`.
