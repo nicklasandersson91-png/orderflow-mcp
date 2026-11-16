@@ -2,7 +2,8 @@
 
 Free, live **order flow data** for AI assistants and your own code: order book depth and walls, candles with buy/sell volume and
 CVD, large trades, real liquidations, an estimated liquidation map, funding, open interest and key price levels for **Bitcoin,
-Ethereum, Solana, XRP, gold, silver, the US 500, the US 100 and WTI crude oil**.
+Ethereum, Solana, XRP, gold, silver, the US 500, the US 100, WTI crude oil, EUR/USD, Nvidia, Google, Apple, Tesla and SpaceX**,
+24/7, also when the stock and currency markets are closed.
 
 - **MCP server:** `https://swiftedge.uk/mcp` (Streamable HTTP, no key, no account)
 - **REST API:** `https://swiftedge.uk/api/v1/...` (JSON, no key, no account)
@@ -29,12 +30,24 @@ The sessions pages show when the underlying market opens, closes and releases da
 | Ethereum | [/eth/depth](https://swiftedge.uk/eth/depth) | [/eth/levels](https://swiftedge.uk/eth/levels) | | |
 | Solana | [/sol/depth](https://swiftedge.uk/sol/depth) | [/sol/levels](https://swiftedge.uk/sol/levels) | | |
 | XRP | [/xrp/depth](https://swiftedge.uk/xrp/depth) | [/xrp/levels](https://swiftedge.uk/xrp/levels) | | |
+| EUR/USD | [/eurusd/depth](https://swiftedge.uk/eurusd/depth) | [/eurusd/levels](https://swiftedge.uk/eurusd/levels) | [/eurusd/sessions](https://swiftedge.uk/eurusd/sessions) | [EUR/USD order flow](https://swiftedge.uk/guide/eur-usd-order-flow) |
+| Nvidia | [/nvidia/depth](https://swiftedge.uk/nvidia/depth) | [/nvidia/levels](https://swiftedge.uk/nvidia/levels) | [/nvidia/sessions](https://swiftedge.uk/nvidia/sessions) | [Nvidia order flow](https://swiftedge.uk/guide/nvidia-order-flow) |
+| Google | [/google/depth](https://swiftedge.uk/google/depth) | [/google/levels](https://swiftedge.uk/google/levels) | [/google/sessions](https://swiftedge.uk/google/sessions) | [Google order flow](https://swiftedge.uk/guide/google-order-flow) |
+| Apple | [/apple/depth](https://swiftedge.uk/apple/depth) | [/apple/levels](https://swiftedge.uk/apple/levels) | [/apple/sessions](https://swiftedge.uk/apple/sessions) | [Apple order flow](https://swiftedge.uk/guide/apple-order-flow) |
+| Tesla | [/tesla/depth](https://swiftedge.uk/tesla/depth) | [/tesla/levels](https://swiftedge.uk/tesla/levels) | [/tesla/sessions](https://swiftedge.uk/tesla/sessions) | [Tesla order flow](https://swiftedge.uk/guide/tesla-order-flow) |
+| SpaceX | [/spacex/depth](https://swiftedge.uk/spacex/depth) | [/spacex/levels](https://swiftedge.uk/spacex/levels) | | [SpaceX order flow](https://swiftedge.uk/guide/spacex-order-flow) |
 
 More guides: [silver levels](https://swiftedge.uk/guide/silver-levels-explained),
 [oil levels](https://swiftedge.uk/guide/oil-levels-explained), [US 100 levels](https://swiftedge.uk/guide/us-100-levels-explained)
 and [Bitcoin trading sessions](https://swiftedge.uk/guide/bitcoin-trading-sessions). The weekly
-[COT report](https://swiftedge.uk/cot) covers all nine markets, and the [economic calendar](https://swiftedge.uk/economic-calendar)
+[COT report](https://swiftedge.uk/cot) covers every market with a CFTC futures report, and the [economic calendar](https://swiftedge.uk/economic-calendar)
 shows how much past releases moved the markets in the first hour.
+
+Stocks and currencies when their own market is closed: [US stocks on the weekend](https://swiftedge.uk/us-stocks-weekend),
+[EUR/USD on the weekend](https://swiftedge.uk/eur-usd-weekend), and earnings, live:
+[Nvidia](https://swiftedge.uk/nvidia-earnings), [Tesla](https://swiftedge.uk/tesla-earnings),
+[Apple](https://swiftedge.uk/apple-earnings), [Google](https://swiftedge.uk/google-earnings) and
+[SpaceX](https://swiftedge.uk/spacex-earnings).
 
 ## Connect it to your AI app
 
@@ -84,7 +97,8 @@ Every tool is read-only. Each one is also a plain GET endpoint on `https://swift
 | `get_economic_calendar` | `/api/v1/economic-calendar?days=7` | Upcoming releases (CPI, jobs, central banks) with how much markets moved in the first hour after past releases |
 | `get_research_studies` | `/api/v1/research-studies` | Swiftedge's published studies with links and headline findings |
 
-Market codes: `btc`, `eth`, `sol`, `xrp`, `gold`, `silver`, `us500`, `us100`, `oil`. `/api/v1/markets` always lists the current set.
+Market codes: `btc`, `eth`, `sol`, `xrp`, `gold`, `silver`, `us500`, `us100`, `oil`, `eurusd`, `nvidia`, `google`, `apple`,
+`tesla`, `spacex`. `/api/v1/markets` always lists the current set.
 
 ## Use the REST API
 
