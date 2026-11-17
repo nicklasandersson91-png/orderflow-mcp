@@ -111,6 +111,21 @@ Python ([`examples/snapshot.py`](examples/snapshot.py)) and JavaScript ([`exampl
 print the order book walls and key levels for any market. [`examples/mcp_call.sh`](examples/mcp_call.sh) talks to the MCP server
 with plain `curl`.
 
+## Whale signals and top traders: API Pro
+
+The free API covers the market itself. For what the biggest traders are doing, [Swiftedge API Pro](https://swiftedge.uk/developers/pro?utm_source=github&utm_medium=readme)
+gives Swiftedge's own calculations as JSON and webhooks, from $29 a month:
+
+- **Whale signals**: every new position or add of $100k+ by the top 50 traders, with the move after 1, 4 and 24 hours, the exit
+  and the hit rate per market
+- **Top traders**: the top 50 over 30 days, 7 days or today, with profit, account value and their largest positions
+- **Liquidation Radar, key levels and the plan before the Tokyo, London and New York opens**
+- **Webhooks**: new whale signals pushed to your server within about a minute, signed with HMAC-SHA256
+
+```bash
+curl -H "Authorization: Bearer $SWIFTEDGE_KEY" "https://swiftedge.uk/api/pro/v1/whale-signals?market=btc&limit=5"
+```
+
 ## Good to know
 
 - **Free, no key.** Please link to [swiftedge.uk](https://swiftedge.uk/?utm_source=github&utm_medium=readme) when you show the
